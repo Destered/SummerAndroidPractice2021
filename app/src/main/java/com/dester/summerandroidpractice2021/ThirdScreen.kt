@@ -6,6 +6,6 @@ import android.os.Bundle
 class ThirdScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ThirdScreen)
+        setContentView(R.layout.third_screen)
     }
 }
