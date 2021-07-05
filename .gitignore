@@ -25,3 +25,4 @@ build/**
 classes/**
 target/**
 /gradle.properties
+!/gradle.properties
