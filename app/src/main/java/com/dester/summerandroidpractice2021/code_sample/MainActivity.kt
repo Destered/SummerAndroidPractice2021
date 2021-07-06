@@ -1,4 +1,4 @@
-package com.dester.summerandroidpractice2021.`code sample`
+package com.dester.summerandroidpractice2021.code_sample
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dester.summerandroidpractice2021.R
-import com.dester.summerandroidpractice2021.`code sample`.model.Info
+import com.dester.summerandroidpractice2021.code_sample.model.Info
 
 
 class MainActivity : AppCompatActivity() {

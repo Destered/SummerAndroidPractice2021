@@ -1,7 +1,7 @@
-package com.dester.summerandroidpractice2021.`code sample`
+package com.dester.summerandroidpractice2021.code_sample
 
 import androidx.recyclerview.widget.DiffUtil
-import com.dester.summerandroidpractice2021.`code sample`.model.Info
+import com.dester.summerandroidpractice2021.code_sample.model.Info
 
 class InfoListDiffUtilsCallback(
         var oldList:ArrayList<Info>,

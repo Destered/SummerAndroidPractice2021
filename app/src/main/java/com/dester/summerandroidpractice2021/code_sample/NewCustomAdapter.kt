@@ -1,10 +1,10 @@
-package com.dester.summerandroidpractice2021.`code sample`
+package com.dester.summerandroidpractice2021.code_sample
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dester.summerandroidpractice2021.databinding.RecyclerviewPhotoyearBinding
-import com.dester.summerandroidpractice2021.`code sample`.model.Info
+import com.dester.summerandroidpractice2021.code_sample.model.Info
 import java.util.ArrayList
 
 class NewCustomAdapter() : RecyclerView.Adapter<NewCustomAdapter.VH>() {
