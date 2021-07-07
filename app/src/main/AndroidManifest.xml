@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SummerAndroidPractice2021">
+        <activity android:name=".Last_screen"></activity>
     </application>
 
 </manifest>
