@@ -3,23 +3,40 @@ package com.dester.summerandroidpractice2021
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.dester.summerandroidpractice2021.databinding.ActivityMainBinding
 
 
 public class MainActivity : AppCompatActivity() {
 
 
+    lateinit var binding: ActivityMainBinding
+    private val adapter = YearAdapter()
+    private val imageIdList = listOf(R.drawable.photo1,
+        R.drawable.photo2,
+        R.drawable.photo3,
+        R.drawable.photo4)
+    private var index =0
+    private var yeartemp= 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val year: RecyclerView =  findViewById(R.id.rv_photoYear)
-        year.layoutManager = LinearLayoutManager(this)
-        year.adapter = CustomRecyclerAdapter(fillList())
-    }
-    private fun fillList(): List<String> {
-        val data = mutableListOf<String>()
-        (0..30).forEach { i -> data.add("\$i element") }
-        return data
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        init()
+
+
     }
 
+    public  fun init(){
+        binding.apply {
+            rvPhotoYear.layoutManager=LinearLayoutManager(this@MainActivity)
+            rvPhotoYear.adapter = adapter
+            btnAddYear.setOnClickListener{
+                if(index>3) index = 0
+                val year = Year(imageIdList[index],(2021-yeartemp).toString())
+                adapter.addYear(year)
+                index++
+                yeartemp++
+            }
+        }
+    }
 }
