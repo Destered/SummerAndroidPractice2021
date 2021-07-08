@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 class DialogYear : DialogFragment() {
 
     private val yearNames = arrayOf("2156", "34", "456")
-    public var yearName = Int
+    public var yearName: Int = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
