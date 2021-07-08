@@ -32,5 +32,6 @@ class MonthAdapter: RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
 
     fun addMonth(month: InfoMonth){
         monthList.add(month)
+        notifyDataSetChanged()
     }
 }
