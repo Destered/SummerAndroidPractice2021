@@ -1,96 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ThirdScreen"
-    android:background="@color/cardview_dark_background">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/frame"
-        android:layout_width="310dp"
-        android:layout_height="204dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_frame" />
+    <data>
 
-    <TextView
-        android:id="@+id/description_of_the_month"
-        android:layout_width="327dp"
-        android:layout_height="101dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame" />
+    </data>
 
-    <ImageButton
-        android:id="@+id/btn_choose_day"
-        android:layout_width="164dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="24dp"
-        android:background="@color/cardview_dark_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description_of_the_month"
-        app:srcCompat="@drawable/ic_btn_goday" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ThirdScreen"
+        android:background="@color/cardview_dark_background">
 
-    <TextView
-        android:id="@+id/description_of_the_day"
-        android:layout_width="158dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="4dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
-        app:layout_constraintStart_toEndOf="@+id/btn_choose_day"
-        app:layout_constraintTop_toBottomOf="@+id/description_of_the_month" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/cardview_dark_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_btn_back" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/btn_add_day"
-        android:layout_width="164dp"
-        android:layout_height="120dp"
-        android:background="@color/cardview_dark_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_choose_day"
-        app:srcCompat="@drawable/ic_btn_addday" />
+                <TextView
+                    android:id="@+id/description_of_the_month"
+                    android:layout_width="327dp"
+                    android:layout_height="101dp"
+                    android:layout_marginStart="43dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="42dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frame" />
 
-    <ImageView
-        android:id="@+id/place_under_image_month"
-        android:layout_width="223dp"
-        android:layout_height="113dp"
-        app:layout_constraintBottom_toBottomOf="@+id/frame"
-        app:layout_constraintEnd_toEndOf="@+id/frame"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="@+id/frame"
-        app:layout_constraintTop_toTopOf="@+id/frame"
-        app:layout_constraintVertical_bias="0.494"
-        tools:srcCompat="@tools:sample/avatars" />
+                <ImageButton
+                    android:id="@+id/btn_add_day"
+                    android:layout_width="164dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/cardview_dark_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rcView"
+                    app:srcCompat="@drawable/ic_btn_addday" />
 
-    <ImageView
-        android:id="@+id/place_under_image_day"
-        android:layout_width="143dp"
-        android:layout_height="88dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_choose_day"
-        app:layout_constraintEnd_toEndOf="@+id/btn_choose_day"
-        app:layout_constraintStart_toStartOf="@+id/btn_choose_day"
-        app:layout_constraintTop_toTopOf="@+id/btn_choose_day"
-        app:layout_constraintVertical_bias="0.481"
-        tools:srcCompat="@tools:sample/avatars" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/description_of_the_month" />
+
+                <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/cardview_dark_background"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_btn_back" />
+
+                <ImageView
+                    android:id="@+id/frame"
+                    android:layout_width="310dp"
+                    android:layout_height="204dp"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginEnd="53dp"
+                    app:layout_constraintBottom_toTopOf="@+id/description_of_the_month"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_frame" />
+
+                <ImageView
+                    android:id="@+id/place_under_image_month"
+                    android:layout_width="223dp"
+                    android:layout_height="113dp"
+                    app:layout_constraintBottom_toTopOf="@+id/description_of_the_month"
+                    app:layout_constraintEnd_toEndOf="@+id/frame"
+                    app:layout_constraintStart_toStartOf="@+id/frame"
+                    app:layout_constraintTop_toTopOf="@+id/frame"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
