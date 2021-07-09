@@ -5,7 +5,6 @@ data class Events(
 )
 {
     fun addYear(year: Int, description: String?){
-        // Сделать проерку на существующие года
         this.years.add(Year(year, mutableListOf<Mounth>(), description))
     }
 }

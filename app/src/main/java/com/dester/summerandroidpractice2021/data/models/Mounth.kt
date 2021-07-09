@@ -1,5 +1,7 @@
 package com.dester.summerandroidpractice2021.data.models
 
+import android.graphics.drawable.Drawable
+
 data class Mounth(
     var mounth: Int,
     var days: MutableList<Day>,
@@ -7,7 +9,7 @@ data class Mounth(
 ){
     var isFavorite: Boolean = false
 
-    fun addDay(date: EventDate, title: String, description: String?){
-        this.days.add(Day(date, title, description))
+    fun addDay(date: EventDate, title: String, description: String?, imageString: String?){
+        this.days.add(Day(date, title, description, imageString))
     }
 }

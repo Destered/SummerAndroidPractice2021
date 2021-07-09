@@ -9,7 +9,6 @@ data class Year(
     var isFavorite: Boolean = false
 
     fun addMounth(mounth: Int, description: String?){
-        // сделать проверку на существующие месяца
         this.mounths.add(Mounth(mounth, mutableListOf<Day>(), description))
     }
 }
