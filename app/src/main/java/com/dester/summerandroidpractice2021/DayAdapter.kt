@@ -3,11 +3,12 @@ package com.dester.summerandroidpractice2021
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 
 class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
-    var dayList = ArrayList<Day>()
+    private var dayList = ArrayList<Day>()
 
     class DayHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = DayItemBinding.bind(item)
@@ -33,7 +34,6 @@ class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
 
     fun addDay(day: Day){
         dayList.add(day)
-        notifyDataSetChanged()
     }
 
     fun getList(): ArrayList<Day>

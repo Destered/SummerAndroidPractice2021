@@ -2,6 +2,8 @@ package com.dester.summerandroidpractice2021
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.databinding.ThirdScreenBinding
 
@@ -20,8 +22,13 @@ class ThirdScreen : AppCompatActivity() {
             rcView.layoutManager = LinearLayoutManager(this@ThirdScreen)
             rcView.adapter = adapter
             btnAddDay.setOnClickListener {
-                val a = Day(R.drawable.moto_telka, "Description Day")
-                adapter.addDay(a)
+                val newList = adapter.getList()
+                newList.add(Day(R.drawable.moto_telka, "AAA"))
+                val dayDiffUtilCallBack = DayDiffUtilCallBack(adapter.getList(), newList)
+                val callBackResult = DiffUtil.calculateDiff(dayDiffUtilCallBack)
+                adapter.setDays(newList)
+                callBackResult.dispatchUpdatesTo(adapter)
+                Log.d("NewList", "${adapter.getList().toString()}")
             }
         }
     }
