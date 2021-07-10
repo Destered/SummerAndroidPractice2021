@@ -10,12 +10,12 @@ import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
     private var dayList = ArrayList<Day>()
 
-    class DayHolder(item: View): RecyclerView.ViewHolder(item) {
+    class DayHolder(item: View): RecyclerView.ViewHolder(item){
         val binding = DayItemBinding.bind(item)
 
         fun bind(day: Day){
-         binding.photo.setImageResource(day.imageId)
-         binding.description.text = day.desc
+            binding.photo.setImageResource(day.imageId)
+            binding.description.text = day.desc
         }
     }
 
