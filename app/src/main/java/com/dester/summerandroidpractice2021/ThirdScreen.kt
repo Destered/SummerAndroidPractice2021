@@ -20,9 +20,7 @@ class ThirdScreen : AppCompatActivity() {
             rcView.layoutManager = LinearLayoutManager(this@ThirdScreen)
             rcView.adapter = adapter
             btnAddDay.setOnClickListener {
-                var b = 0
-                val a = Day(R.drawable.moto_telka, "$b")
-                b++
+                val a = Day(R.drawable.moto_telka, "Description Day")
                 adapter.addDay(a)
             }
         }
