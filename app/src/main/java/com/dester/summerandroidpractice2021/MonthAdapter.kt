@@ -13,7 +13,7 @@ class MonthAdapter: RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
         val binding  = RecyclerMonthBinding.bind(item)
         fun bind(photoMonth: InfoMonth) = with(binding){
             ivRecycleMonth.setImageResource(photoMonth.imageId)
-            rvRecycleMonth.text = photoMonth.tittle
+            tvRecycleMonth.text = photoMonth.tittle
 
         }
     }
