@@ -10,6 +10,12 @@ import com.dester.summerandroidpractice2021.databinding.ThirdScreenBinding
 class ThirdScreen : AppCompatActivity() {
     lateinit var binding: ThirdScreenBinding
     private val adapter = DayAdapter()
+    var index:Int = 0
+    val list: ArrayList<Day> = arrayListOf(
+        Day(R.drawable.photo_korzh, "AAA"),
+        Day(R.drawable.photo1,"BBB"),
+        Day(R.drawable.moto_telka,"CCC")
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ThirdScreenBinding.inflate(layoutInflater)
@@ -23,12 +29,13 @@ class ThirdScreen : AppCompatActivity() {
             rcView.adapter = adapter
             btnAddDay.setOnClickListener {
                 val newList = adapter.getList()
-                newList.add(Day(R.drawable.moto_telka, "AAA"))
+                if(index > 2) index = 0
+                newList.add(list[index])
+                index++
                 val dayDiffUtilCallBack = DayDiffUtilCallBack(adapter.getList(), newList)
                 val callBackResult = DiffUtil.calculateDiff(dayDiffUtilCallBack)
                 adapter.setDays(newList)
                 callBackResult.dispatchUpdatesTo(adapter)
-                Log.d("NewList", "${adapter.getList().toString()}")
             }
         }
     }

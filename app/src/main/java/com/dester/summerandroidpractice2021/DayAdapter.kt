@@ -3,7 +3,6 @@ package com.dester.summerandroidpractice2021
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 
@@ -38,11 +37,15 @@ class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
 
     fun getList(): ArrayList<Day>
     {
-        return dayList
+        val list: ArrayList<Day> = arrayListOf()
+        dayList.forEach {
+            list.add(it)
+        }
+        return list
     }
 
     fun setDays(list: ArrayList<Day>){
         dayList.clear()
-        dayList = list
+        dayList.addAll(list)
     }
 }
