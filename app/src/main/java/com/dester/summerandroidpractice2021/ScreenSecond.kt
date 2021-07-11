@@ -89,6 +89,19 @@ class ScreenSecond : AppCompatActivity() {
             tvYear.text = database.years[yearNumber].yearNumber.toString()
 
         }
+    }
 
+    override fun onResume() {
+        val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
+        val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
+        val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+        adapter.setItems(newList)
+        resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+        super.onResume()
+    }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
     }
 }

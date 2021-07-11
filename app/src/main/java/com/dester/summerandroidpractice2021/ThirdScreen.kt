@@ -33,7 +33,9 @@ class ThirdScreen : AppCompatActivity() {
 
     private fun init(){
         adapter.setDays(database.years[yearNumber].mounths[monthNumber].days)
-
+        database.years[yearNumber].mounths[monthNumber].favoritePhoto?.let{
+            binding.placeUnderImageMonth.setImageDrawable(Utils.stringToImage(it))
+        }
         binding.rcView.layoutManager = LinearLayoutManager(this@ThirdScreen)
         binding.rcView.adapter = adapter
 
@@ -77,5 +79,10 @@ class ThirdScreen : AppCompatActivity() {
         intent.putExtra("monthNumber", monthNumber)
         intent.putExtra("yearNumber", yearNumber)
         startActivity(intent)
+    }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
     }
 }

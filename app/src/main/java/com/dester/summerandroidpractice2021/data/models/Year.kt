@@ -15,6 +15,6 @@ data class Year(
     fun addMounth(context: Context,mounth: Int){
         this.mounths.add(Mounth(null,mounth, arrayListOf(), 0,null, null))
         Events.sortMonth(mounths)
-        Singleton.saveData(context)
+        /*Singleton.saveData(context)*/
     }
 }

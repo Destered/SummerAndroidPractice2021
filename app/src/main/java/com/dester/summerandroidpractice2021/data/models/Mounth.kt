@@ -16,6 +16,6 @@ data class Mounth(
     fun addDay(context: Context){
         this.days.add(Day(null,null, null))
         Events.sortDay(days)
-        Singleton.saveData(context)
+        /*Singleton.saveData(context)*/
     }
 }
