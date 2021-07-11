@@ -28,6 +28,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/place_under_image_month"
+                    android:layout_width="238dp"
+                    android:layout_height="137dp"
+                    android:foregroundGravity="center"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="@+id/frame"
+                    app:layout_constraintEnd_toEndOf="@+id/frame"
+                    app:layout_constraintHorizontal_bias="0.526"
+                    app:layout_constraintStart_toStartOf="@+id/frame"
+                    app:layout_constraintTop_toTopOf="@+id/frame"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:srcCompat="@drawable/ic_emptyframe" />
+
                 <ImageButton
                     android:id="@+id/btn_add_day"
                     android:layout_width="0dp"
@@ -46,11 +60,11 @@
                     android:id="@+id/rcView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/frame"
                     tools:listitem="@layout/day_item" />
 
                 <ImageButton
@@ -78,32 +92,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_frame" />
-
-                <ImageView
-                    android:id="@+id/place_under_image_month"
-                    android:layout_width="231dp"
-                    android:layout_height="130dp"
-                    android:foregroundGravity="center"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="@+id/frame"
-                    app:layout_constraintEnd_toEndOf="@+id/frame"
-                    app:layout_constraintHorizontal_bias="0.526"
-                    app:layout_constraintStart_toStartOf="@+id/frame"
-                    app:layout_constraintTop_toTopOf="@+id/frame"
-                    app:layout_constraintVertical_bias="0.13"
-                    tools:srcCompat="@drawable/ic_emptyframe" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frame" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

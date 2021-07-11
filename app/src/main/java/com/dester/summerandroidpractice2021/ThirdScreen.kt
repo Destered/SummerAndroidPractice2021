@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.data.models.*
 import com.dester.summerandroidpractice2021.databinding.ThirdScreenBinding
@@ -36,7 +37,7 @@ class ThirdScreen : AppCompatActivity() {
         database.years[yearNumber].mounths[monthNumber].favoritePhoto?.let{
             binding.placeUnderImageMonth.setImageDrawable(Utils.stringToImage(it))
         }
-        binding.rcView.layoutManager = LinearLayoutManager(this@ThirdScreen)
+        binding.rcView.layoutManager = GridLayoutManager(this@ThirdScreen,2)
         binding.rcView.adapter = adapter
 
         binding.btnBack.setOnClickListener {
