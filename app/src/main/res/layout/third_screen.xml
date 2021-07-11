@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ThirdScreen"
-        android:background="@color/cardview_dark_background">
+        android:background="@color/gray">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rcView"
-                    app:srcCompat="@drawable/ic_btn_add" />
+                    app:srcCompat="@drawable/ic_btn" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcView"
@@ -50,7 +50,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    tools:listitem="@layout/day_item" />
 
                 <ImageButton
                     android:id="@+id/btn_back"
@@ -76,18 +77,21 @@
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_frame_thirdscreen" />
+                    app:srcCompat="@drawable/ic_frame" />
 
                 <ImageView
                     android:id="@+id/place_under_image_month"
                     android:layout_width="231dp"
-                    android:layout_height="138dp"
+                    android:layout_height="130dp"
                     android:foregroundGravity="center"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="@+id/frame"
                     app:layout_constraintEnd_toEndOf="@+id/frame"
+                    app:layout_constraintHorizontal_bias="0.526"
                     app:layout_constraintStart_toStartOf="@+id/frame"
                     app:layout_constraintTop_toTopOf="@+id/frame"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:layout_constraintVertical_bias="0.13"
+                    tools:srcCompat="@drawable/ic_emptyframe" />
 
                 <TextView
                     android:id="@+id/textView"

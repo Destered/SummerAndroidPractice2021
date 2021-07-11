@@ -21,15 +21,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var database: Events
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
-
-    private val imageIdList = listOf(
-        R.drawable.photo1,
-        R.drawable.photo2,
-        R.drawable.photo3,
-        R.drawable.photo4
-    )
-    private var index = 0
-    private var yeartemp = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = Singleton.getInstance(this)
