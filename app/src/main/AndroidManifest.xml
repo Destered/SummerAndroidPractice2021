@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ThirdScreen"/>
+        <activity android:name=".ScreenSecond"/>
     </application>
 
 </manifest>
