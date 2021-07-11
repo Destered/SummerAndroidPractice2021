@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dester.summerandroidpractice2021.data.models.Mounth
+import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.RecyclerMonthBinding
 import java.time.Month
 import java.util.ArrayList
@@ -14,10 +15,12 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<Mo
     inner class MonthHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding  = RecyclerMonthBinding.bind(item)
         fun bind(photoMonth: Mounth) = with(binding){
-            ivRecycleMonth.setImageResource(photoMonth.imageId)
-            tvRecycleMonth.text = photoMonth.tittle
+            photoMonth.favoritePhoto?.let {
+                ivRecycleMonth.setImageDrawable(Utils.stringToImage(it))
+            }
+            tvRecycleMonth.text = ScreenSecond.monthNameList[photoMonth.mounthNumber]
             binding.root.setOnClickListener {
-                openDayActivity.invoke(photoMonth.imageId)
+                openDayActivity.invoke(photoMonth.mounthId ?:0)
             }
         }
     }
@@ -46,7 +49,7 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<Mo
         return list
     }
 
-    fun setItems(newList: List<InfoMonth>){
+    fun setItems(newList: List<Mounth>){
         monthList.clear()
         monthList.addAll(newList)
     }

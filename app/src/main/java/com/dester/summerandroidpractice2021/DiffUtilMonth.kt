@@ -1,10 +1,11 @@
 package com.dester.summerandroidpractice2021
 
 import androidx.recyclerview.widget.DiffUtil
+import com.dester.summerandroidpractice2021.data.models.Mounth
 
 class DiffUtilMonth (
-        var oldList:ArrayList<InfoMonth>,
-        var newList:ArrayList<InfoMonth>
+        var oldList:ArrayList<Mounth>,
+        var newList:ArrayList<Mounth>
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize(): Int {
@@ -16,10 +17,10 @@ class DiffUtilMonth (
         }
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].monthName== newList[newItemPosition].monthName
+            return oldList[oldItemPosition].mounthNumber== newList[newItemPosition].mounthNumber
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].imageId == newList[newItemPosition].imageId
+            return (oldList[oldItemPosition].mounthId == newList[newItemPosition].mounthId && oldList[oldItemPosition].favoritePhoto==newList[newItemPosition].favoritePhoto)
         }
 }

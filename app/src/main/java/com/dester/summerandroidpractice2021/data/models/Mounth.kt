@@ -3,9 +3,11 @@ package com.dester.summerandroidpractice2021.data.models
 import android.graphics.drawable.Drawable
 
 data class Mounth(
-    var mounth: Int?,
-    var days: MutableList<Day>,
+    var mounthId: Int?,
+    var mounthNumber: Int,
+    var days: ArrayList<Day>,
     var description: String?,
+    var favoritePhoto: String?
 ){
     var isFavorite: Boolean = false
 
