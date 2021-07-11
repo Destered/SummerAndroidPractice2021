@@ -4,17 +4,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dester.summerandroidpractice2021.data.models.Day
+import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 
-class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
+class DayAdapter(
+    val openFourthActivity:((Int) -> Unit)
+): RecyclerView.Adapter<DayAdapter.DayHolder>() {
     var dayList = ArrayList<Day>()
 
-    class DayHolder(item: View): RecyclerView.ViewHolder(item) {
+    inner class DayHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = DayItemBinding.bind(item)
 
         fun bind(day: Day){
-         binding.photo.setImageResource(day.imageId)
-         binding.description.text = day.desc
+            binding.photo.setImageDrawable(day.imageSourceView?.let { Utils().stringToImage(it) })
+            binding.description.text = day.description
+            binding.titleDay.text = day.title
+            binding.root.setOnClickListener {
+                day.dayId?.let { it1 -> openFourthActivity.invoke(it1) }
+            }
         }
     }
 
@@ -38,11 +46,15 @@ class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
 
     fun getList(): ArrayList<Day>
     {
-        return dayList
+        val list = ArrayList<Day>()
+        dayList.forEach {
+            list.add(it)
+        }
+        return list
     }
 
     fun setDays(list: ArrayList<Day>){
         dayList.clear()
-        dayList = list
+        dayList.addAll(list)
     }
 }
