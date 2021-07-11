@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.data.models.Year
 import com.dester.summerandroidpractice2021.databinding.RvPhotoyearBinding
 import java.util.ArrayList
@@ -46,10 +47,11 @@ class YearAdapter(
     inner class YearHolder(item: View):RecyclerView.ViewHolder(item) {
         val binding = RvPhotoyearBinding.bind(item)
         fun bind(year: Year)=with(binding){
-            ivEmptyfrane.setImageResource(year.imageId)
-            tvYear.text=year.yearName
+            year?.favoritePhoto?.let { ivEmptyfrane.setImageDrawable(Utils.stringToImage(it)) }
+
+            tvYear.text=year.yearNumber.toString()
             binding.root.setOnClickListener {
-                openMonthActivity.invoke(year.yearId)
+                openMonthActivity.invoke(year.yearId ?: 0)
             }
         }
     }
