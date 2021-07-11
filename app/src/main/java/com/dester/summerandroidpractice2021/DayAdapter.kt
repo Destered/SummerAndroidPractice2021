@@ -17,7 +17,7 @@ class DayAdapter(
         val binding = DayItemBinding.bind(item)
 
         fun bind(day: Day){
-            binding.photo.setImageDrawable(day.imageSourceView?.let { Utils().stringToImage(it) })
+            //binding.photo.setImageDrawable(day.imageSourceView?.let { Utils().stringToImage(it) })
             binding.description.text = day.description
             binding.titleDay.text = day.title
             binding.root.setOnClickListener {

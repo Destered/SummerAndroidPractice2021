@@ -3,10 +3,8 @@ package com.dester.summerandroidpractice2021
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.data.models.Events
 import com.dester.summerandroidpractice2021.data.models.Mounth
 import com.dester.summerandroidpractice2021.data.models.Singleton
@@ -20,19 +18,6 @@ class ScreenSecond : AppCompatActivity() {
     lateinit var database: Events
     var yearNumber = 0
     private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
-    private val imageIdList = listOf(R.drawable.january,
-        R.drawable.february,
-        R.drawable.mart,
-        R.drawable.april,
-        R.drawable.may,
-        R.drawable.june,
-        R.drawable.jule,
-        R.drawable.august,
-        R.drawable.september,
-        R.drawable.october,
-        R.drawable.november,
-        R.drawable.december
-    )
     companion object {
         val monthNameList = listOf(
             "january",
@@ -100,6 +85,8 @@ class ScreenSecond : AppCompatActivity() {
             btnBackmonth.setOnClickListener {
                 this@ScreenSecond.finish()
             }
+            tvYear.text = database.years[yearNumber].yearNumber.toString()
+
         }
 
     }
