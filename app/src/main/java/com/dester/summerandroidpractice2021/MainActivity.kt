@@ -14,7 +14,6 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-    var myYear = SimpleDateFormat("yyyy").format(Date()).toInt()
     lateinit var binding: ActivityMainBinding
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
     private val imageIdList = listOf(
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         R.drawable.photo4
     )
     private var index = 0
-    private var yeartemp = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -55,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openMonthActivity(yearNumber:Int){
-        val intent = Intent(this,ThirdScreen::class.java)
+        val intent = Intent(this,ScreenSecond::class.java)
         intent.putExtra("yearNumber",yearNumber)
         startActivity(intent)
     }
