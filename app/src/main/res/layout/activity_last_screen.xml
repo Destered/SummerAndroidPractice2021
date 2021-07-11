@@ -37,7 +37,7 @@
                     app:srcCompat="@drawable/__1" />
 
                 <ImageView
-                    android:id="@+id/btn_Add"
+                    android:id="@+id/btn_add"
                     android:layout_width="255dp"
                     android:layout_height="101dp"
                     android:layout_marginBottom="48dp"
@@ -51,7 +51,7 @@
                     android:layout_width="406dp"
                     android:layout_height="423dp"
                     android:visibility="visible"
-                    app:layout_constraintBottom_toTopOf="@+id/btn_Add"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_add"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.4"
                     app:layout_constraintStart_toStartOf="parent"

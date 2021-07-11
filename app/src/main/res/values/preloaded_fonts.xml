@@ -2,6 +2,5 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/averia_serif_libre_light_italic</item>
-        <item>@font/yeseva_one</item>
     </array>
 </resources>
