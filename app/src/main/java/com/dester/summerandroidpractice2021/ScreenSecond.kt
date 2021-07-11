@@ -18,20 +18,8 @@ import kotlin.collections.ArrayList
 class ScreenSecond : AppCompatActivity() {
     lateinit var binding: ActivityScreenSecondBinding
     lateinit var database: Events
+    var yearNumber = 0
     private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
-    private val imageIdList = listOf(R.drawable.january,
-        R.drawable.february,
-        R.drawable.mart,
-        R.drawable.april,
-        R.drawable.may,
-        R.drawable.june,
-        R.drawable.jule,
-        R.drawable.august,
-        R.drawable.september,
-        R.drawable.october,
-        R.drawable.november,
-        R.drawable.december
-    )
     companion object {
         val monthNameList = listOf(
             "january",
