@@ -3,11 +3,13 @@ package com.dester.summerandroidpractice2021
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dester.summerandroidpractice2021.data.models.Events
 import com.dester.summerandroidpractice2021.data.models.Mounth
 import com.dester.summerandroidpractice2021.data.models.Singleton
+import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.ActivityScreenSecondBinding
 import com.whiteelephant.monthpicker.MonthPickerDialog
 import java.util.*
@@ -17,7 +19,7 @@ class ScreenSecond : AppCompatActivity() {
     lateinit var binding: ActivityScreenSecondBinding
     lateinit var database: Events
     var yearNumber = 0
-    private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
+    private val adapter = MonthAdapter ({ number -> openDayActivity(number) },{number ->favoriteMonth(number)})
     companion object {
         val monthNameList = listOf(
             "january",
@@ -103,5 +105,19 @@ class ScreenSecond : AppCompatActivity() {
     override fun onPause() {
         Singleton.saveData(this)
         super.onPause()
+    }
+    fun favoriteMonth(monthNumber: Int) {
+        val month = database.years[yearNumber].mounths[monthNumber]
+        if(month.favoritePhoto==null){
+            Toast.makeText(applicationContext,"Нужно выбрать изображение",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            binding.ivEmptyFrame.setImageDrawable(Utils.stringToImage( month.favoritePhoto ?:""))
+            database.years[yearNumber].mounths.forEach{
+                it.isFavorite = false
+            }
+            month.isFavorite = true
+            database.years[yearNumber].favoritePhoto = month.favoritePhoto
+        }
     }
 }

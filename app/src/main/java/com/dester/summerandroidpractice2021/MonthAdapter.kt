@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dester.summerandroidpractice2021.data.models.Mounth
 import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.RecyclerMonthBinding
-import java.time.Month
 import java.util.ArrayList
 
-class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
+class MonthAdapter(val openDayActivity:((Int) -> Unit),val favoriteMonth:((Int)->Unit)): RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
     val monthList = ArrayList<Mounth>()
     inner class MonthHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding  = RecyclerMonthBinding.bind(item)
@@ -18,8 +17,14 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<Mo
             photoMonth.favoritePhoto?.let {
                 ivRecycleMonth.setImageDrawable(Utils.stringToImage(it))
             }
+            if(photoMonth.isFavorite){
+
+            }
+            btnFavoriteMonth.setOnClickListener {
+                favoriteMonth.invoke(photoMonth.mounthId ?: 0)
+            }
             tvRecycleMonth.text = ScreenSecond.monthNameList[photoMonth.mounthNumber]
-            binding.root.setOnClickListener {
+            root.setOnClickListener {
                 openDayActivity.invoke(photoMonth.mounthId ?:0)
             }
         }
@@ -53,5 +58,4 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<Mo
         monthList.clear()
         monthList.addAll(newList)
     }
-
 }
