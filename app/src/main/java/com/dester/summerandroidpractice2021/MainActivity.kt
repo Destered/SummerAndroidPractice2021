@@ -17,6 +17,7 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
+    var myYear = SimpleDateFormat("yyyy").format(Date()).toInt()
     lateinit var binding: ActivityMainBinding
     lateinit var database: Events
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val builder = MonthPickerDialog.Builder(
             this,
             { _, selectedYear ->
-                database.addYear(selectedYear)
+                database.addYear(this,selectedYear)
                 val newList: ArrayList<Year> = database.years
                 val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
                 val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
@@ -65,10 +66,5 @@ class MainActivity : AppCompatActivity() {
                 showYearPicker()
             }
         }
-    }
-
-    override fun onPause() {
-        Singleton.saveData(this)
-        super.onPause()
     }
 }

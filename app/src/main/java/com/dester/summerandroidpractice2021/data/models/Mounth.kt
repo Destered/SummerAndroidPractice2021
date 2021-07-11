@@ -1,15 +1,21 @@
 package com.dester.summerandroidpractice2021.data.models
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 
 data class Mounth(
-    var mounth: Int?,
-    var days: MutableList<Day>,
+    var mounthId: Int?,
+    var mounthNumber: Int,
+    var days: ArrayList<Day>,
+    var countDays: Int,
     var description: String?,
+    var favoritePhoto: String?
 ){
     var isFavorite: Boolean = false
 
-    fun addDay(date: EventDate, title: String, description: String?, imageString: String?){
-        this.days.add(Day(date, title, description, imageString, days.size))
+    fun addDay(context: Context){
+        this.days.add(Day(null,null, null))
+        Events.sortDay(days)
+        Singleton.saveData(context)
     }
 }

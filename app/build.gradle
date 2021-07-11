@@ -36,6 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding true
     }
@@ -53,7 +54,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
-    implementation 'com.github.fondesa:kpermissions:3.2.1'
+    implementation 'ru.superjob:kotlin-permissions:1.0.3'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
     implementation 'com.github.ChilliBits:splash-screen:1.1.6'
     kapt 'com.android.databinding:compiler:3.1.4'
