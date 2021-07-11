@@ -48,15 +48,12 @@ class MainActivity : AppCompatActivity() {
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH)
         )
-
-
         builder.setMinYear(2000)
             .setMaxYear(calendar.get(Calendar.YEAR))
             .showYearOnly()
             .build()
             .show()
     }
-
 
     fun init() {
         binding.apply {
