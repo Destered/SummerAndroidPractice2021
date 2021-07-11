@@ -27,7 +27,7 @@ class DayAdapter(
                     binding.btnStar.setOnClickListener {
                         favoriteButton.invoke(day.dayId ?: 0)
                     }
-                    binding.root.setOnClickListener {
+                    binding.photo.setOnClickListener {
                         openFourthActivity.invoke(day.dayId ?: 0)
                     }
             }

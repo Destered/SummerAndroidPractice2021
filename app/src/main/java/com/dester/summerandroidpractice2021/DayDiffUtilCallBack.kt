@@ -13,10 +13,10 @@ class DayDiffUtilCallBack(val oldList:ArrayList<Day>, val newList:ArrayList<Day>
     }
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].description == newList[newItemPosition].description
+        return oldList[oldItemPosition].dayId == newList[newItemPosition].dayId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
+        return oldList[oldItemPosition].imageSourceView == newList[newItemPosition].imageSourceView
     }
 }
