@@ -16,7 +16,7 @@ class DiffUtilMonth (
         }
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].yearName ffgf`== newList[newItemPosition].yearName
+            return oldList[oldItemPosition].monthName== newList[newItemPosition].monthName
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

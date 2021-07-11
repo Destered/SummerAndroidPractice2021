@@ -32,6 +32,19 @@ class MonthAdapter: RecyclerView.Adapter<MonthAdapter.MonthHolder>() {
 
     fun addMonth(month: InfoMonth){
         monthList.add(month)
-        notifyDataSetChanged()
     }
+
+    fun getList():ArrayList<InfoMonth>{
+        val list:ArrayList<InfoMonth> = arrayListOf()
+        monthList.forEach {
+            list.add(it)
+        }
+        return list
+    }
+
+    fun setItems(newList: List<InfoMonth>){
+        monthList.clear()
+        monthList.addAll(newList)
+    }
+
 }
