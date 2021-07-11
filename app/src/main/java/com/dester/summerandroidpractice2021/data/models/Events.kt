@@ -1,7 +1,7 @@
 package com.dester.summerandroidpractice2021.data.models
 
 data class Events(
-    var years: MutableList<Year> = mutableListOf<Year>()
+    var years: ArrayList<Year> = arrayListOf<Year>()
 )
 {
     fun addYear(year: Int){
