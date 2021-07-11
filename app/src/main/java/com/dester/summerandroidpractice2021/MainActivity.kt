@@ -4,6 +4,7 @@ package com.dester.summerandroidpractice2021
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,12 +36,17 @@ class MainActivity : AppCompatActivity() {
         val builder = MonthPickerDialog.Builder(
             this,
             { _, selectedYear ->
-                database.addYear(this,selectedYear)
-                val newList: ArrayList<Year> = database.years
-                val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
-                val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                adapter.setItems(newList)
-                resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                if(database.yearsSelectedList.contains(selectedYear)){
+                    Toast.makeText(this,"Этот год уже существует",Toast.LENGTH_SHORT).show()
+                }else {
+                    database.addYear(this, selectedYear)
+                    database.yearsSelectedList.add(selectedYear)
+                    val newList: ArrayList<Year> = database.years
+                    val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
+                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+                    adapter.setItems(newList)
+                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                }
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH)
