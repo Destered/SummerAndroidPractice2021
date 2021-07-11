@@ -14,11 +14,7 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<Mo
     inner class MonthHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding  = RecyclerMonthBinding.bind(item)
         fun bind(photoMonth: Mounth) = with(binding){
-            ivRecycleMonth.setImageResource(photoMonth.imageId)
-            tvRecycleMonth.text = photoMonth.tittle
-            binding.root.setOnClickListener {
-                openDayActivity.invoke(photoMonth.imageId)
-            }
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthHolder {
@@ -46,7 +42,7 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit)): RecyclerView.Adapter<Mo
         return list
     }
 
-    fun setItems(newList: List<InfoMonth>){
+    fun setItems(newList: List<Mounth>){
         monthList.clear()
         monthList.addAll(newList)
     }

@@ -60,10 +60,10 @@ class ScreenSecond : AppCompatActivity() {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
                     val newList: ArrayList<Mounth> = adapter.getList()
                     newList.add(Mounth(imageIdList[1], arrayListOf(),monthNameList[selectedMonth]))
-                    val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
-                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                    adapter.setItems(newList)
-                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                   // val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
+                   // val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+                   // adapter.setItems(newList)
+                   // resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
                 }
 
             },
