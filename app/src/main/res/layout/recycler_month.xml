@@ -57,7 +57,7 @@
                     android:id="@+id/tv_recycle_month"
                     android:layout_width="316dp"
                     android:layout_height="20dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="4dp"
                     android:fontFamily="sans-serif-black"
                     android:gravity="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
@@ -65,7 +65,7 @@
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/iv_frameMonth"
-                    app:layout_constraintHorizontal_bias="0.504"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/iv_frameMonth" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
