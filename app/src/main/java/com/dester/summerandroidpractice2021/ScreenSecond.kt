@@ -92,12 +92,12 @@ class ScreenSecond : AppCompatActivity() {
     }
 
     override fun onResume() {
+        super.onResume()
         val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
         val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
         val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
         adapter.setItems(newList)
         resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
-        super.onResume()
     }
 
     override fun onPause() {
