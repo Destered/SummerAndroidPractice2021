@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SummerAndroidPractice2021">
-        <activity android:name=".ScreenSecond"
+        <activity android:name=".MainActivity"
             android:theme="@style/AppFullScreenTheme">
 
             <intent-filter>
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ThirdScreen"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".ScreenSecond"/>
     </application>
 
 </manifest>
