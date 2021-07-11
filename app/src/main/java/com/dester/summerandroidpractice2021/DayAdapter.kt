@@ -11,23 +11,23 @@ import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 class DayAdapter(
     val openFourthActivity:((Int) -> Unit)
 ): RecyclerView.Adapter<DayAdapter.DayHolder>() {
-    var dayList = ArrayList<Day>()
+    val dayList = ArrayList<Day>()
 
     inner class DayHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = DayItemBinding.bind(item)
-
         fun bind(day: Day){
-            binding.photo.setImageDrawable(day.imageSourceView?.let { Utils().stringToImage(it) })
-            binding.description.text = day.description
-            binding.titleDay.text = day.title
-            binding.root.setOnClickListener {
-                day.dayId?.let { it1 -> openFourthActivity.invoke(it1) }
+                day.imageSourceView?.let {
+                    binding.photo.setImageDrawable(Utils.stringToImage(it))
+                }
+                    binding.description.text = day.description
+                    binding.root.setOnClickListener {
+                        openFourthActivity.invoke(day.dayId ?: 0)
+                    }
             }
         }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.day_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.day_item, parent, false)
         return DayHolder(view)
     }
 
