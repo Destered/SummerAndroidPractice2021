@@ -26,11 +26,11 @@ class Database(context: Context){
         var inputString = file.bufferedReader().use {
             it.readText()
         }
-        if(file.exists()) {
+        if(file.exists() && inputString.isNotEmpty()) {
             return Gson().fromJson(inputString, Events::class.java)
         }
         else{
-            return Events(mutableListOf<Year>())
+            return Events(arrayListOf<Year>())
         }
     }
 

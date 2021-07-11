@@ -17,7 +17,6 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-    var myYear = SimpleDateFormat("yyyy").format(Date()).toInt()
     lateinit var binding: ActivityMainBinding
     lateinit var database: Events
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
@@ -29,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         R.drawable.photo4
     )
     private var index = 0
-    private var yeartemp = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = Singleton.getInstance(this)
@@ -43,8 +41,8 @@ class MainActivity : AppCompatActivity() {
         val builder = MonthPickerDialog.Builder(
             this,
             { _, selectedYear ->
-                val newList: ArrayList<Year> = adapter.getList()
-                newList.add(Year(imageIdList[index], selectedYear.toString(),0))
+                database.addYear(selectedYear)
+                val newList: ArrayList<Year> = database.years
                 val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
                 val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
                 adapter.setItems(newList)
@@ -61,12 +59,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openMonthActivity(yearNumber:Int){
-        val intent = Intent(this,ThirdScreen::class.java)
+        val intent = Intent(this,ScreenSecond::class.java)
         intent.putExtra("yearNumber",yearNumber)
         startActivity(intent)
     }
 
     fun init() {
+        adapter.setItems(database.years)
         binding.apply {
             rvPhotoYear.layoutManager = LinearLayoutManager(this@MainActivity)
             rvPhotoYear.adapter = adapter
@@ -74,5 +73,10 @@ class MainActivity : AppCompatActivity() {
                 showYearPicker()
             }
         }
+    }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
     }
 }
