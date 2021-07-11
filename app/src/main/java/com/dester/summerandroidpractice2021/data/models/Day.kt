@@ -9,8 +9,7 @@ data class Day(
     var title: String,
     var description: String?,
     var imageSourceView: String?,
-    val itemId: Int?
-
+    var dayId: Int?
 ){
     var isFavorite = false
 }

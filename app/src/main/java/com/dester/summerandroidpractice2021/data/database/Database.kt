@@ -4,6 +4,7 @@ import android.content.Context
 import java.io.File
 import com.google.gson.Gson
 import com.dester.summerandroidpractice2021.data.models.Events
+import com.dester.summerandroidpractice2021.data.models.Year
 import java.util.*
 
 class Database(context: Context){
@@ -25,7 +26,12 @@ class Database(context: Context){
         var inputString = file.bufferedReader().use {
             it.readText()
         }
-        return Gson().fromJson(inputString, Events::class.java)
+        if(file.exists()) {
+            return Gson().fromJson(inputString, Events::class.java)
+        }
+        else{
+            return Events(mutableListOf<Year>())
+        }
     }
 
 }
