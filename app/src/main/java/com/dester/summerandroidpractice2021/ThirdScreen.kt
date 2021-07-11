@@ -50,7 +50,7 @@ class ThirdScreen : AppCompatActivity() {
 
     fun onDataSet(){
 
-        database.years[yearNumber].mounths[monthNumber].addDay()
+        database.years[yearNumber].mounths[monthNumber].addDay(this)
         val newList: ArrayList<Day> = database.years[yearNumber].mounths[monthNumber].days
         val dayDiffUtilCallBack = DayDiffUtilCallBack(adapter.getList(), newList)
         val diffUtilResult = DiffUtil.calculateDiff(dayDiffUtilCallBack)
@@ -59,7 +59,7 @@ class ThirdScreen : AppCompatActivity() {
     }
 
     fun openFourthActivity(dayNumber: Int){
-        val intent = Intent(this,ThirdScreen::class.java)
+        val intent = Intent(this,LastScreen::class.java)
         intent.putExtra("dayNumber", dayNumber)
         intent.putExtra("monthNumber", monthNumber)
         intent.putExtra("yearNumber", yearNumber)
