@@ -3,13 +3,13 @@ package com.dester.summerandroidpractice2021
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.data.models.Events
 import com.dester.summerandroidpractice2021.data.models.Mounth
 import com.dester.summerandroidpractice2021.data.models.Singleton
+import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.ActivityScreenSecondBinding
 import com.whiteelephant.monthpicker.MonthPickerDialog
 import java.util.*
@@ -19,7 +19,7 @@ class ScreenSecond : AppCompatActivity() {
     lateinit var binding: ActivityScreenSecondBinding
     lateinit var database: Events
     var yearNumber = 0
-    private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
+    private val adapter = MonthAdapter ({ number -> openDayActivity(number) },{number ->favoriteMonth(number)})
     companion object {
         val monthNameList = listOf(
             "january",
@@ -49,14 +49,21 @@ class ScreenSecond : AppCompatActivity() {
         val calendar: Calendar = Calendar.getInstance()
         val builder = MonthPickerDialog.Builder(
             this,
+
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
-                    database.years[yearNumber].addMounth(this@ScreenSecond,selectedMonth)
-                    val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
-                    val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
-                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                    adapter.setItems(newList)
-                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                    if(database.monthSelectedList.contains(selectedMonth)){
+                        Toast.makeText(this@ScreenSecond, "Этот месяц уже существует",Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        database.years[yearNumber].addMounth(this@ScreenSecond, selectedMonth)
+                        database.monthSelectedList.add(selectedMonth)
+                        val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
+                        val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
+                        val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+                        adapter.setItems(newList)
+                        resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                    }
                 }
 
             },
@@ -88,6 +95,8 @@ class ScreenSecond : AppCompatActivity() {
             btnBackmonth.setOnClickListener {
                 this@ScreenSecond.finish()
             }
+            tvYear.text = database.years[yearNumber].yearNumber.toString()
+
         }
     }
 
@@ -101,5 +110,19 @@ class ScreenSecond : AppCompatActivity() {
     override fun onPause() {
         Singleton.saveData(this)
         super.onPause()
+    }
+    fun favoriteMonth(monthNumber: Int) {
+        val month = database.years[yearNumber].mounths[monthNumber]
+        if(month.favoritePhoto==null){
+            Toast.makeText(applicationContext,"Нужно выбрать изображение",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            binding.ivEmptyFrame.setImageDrawable(Utils.stringToImage( month.favoritePhoto ?:""))
+            database.years[yearNumber].mounths.forEach{
+                it.isFavorite = false
+            }
+            month.isFavorite = true
+            database.years[yearNumber].favoritePhoto = month.favoritePhoto
+        }
     }
 }
