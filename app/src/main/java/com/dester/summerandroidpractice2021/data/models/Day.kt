@@ -5,11 +5,9 @@ import java.text.DateFormat
 import java.util.Date
 
 data class Day(
-    var date: EventDate,
-    var title: String,
+    var dayId: Int?,
     var description: String?,
-    var imageSourceView: String?,
-    var dayId: Int?
+    var imageSourceView: String?
 ){
     var isFavorite = false
 }

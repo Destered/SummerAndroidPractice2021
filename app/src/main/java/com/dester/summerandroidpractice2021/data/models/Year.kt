@@ -11,7 +11,7 @@ data class Year(
     var isFavorite: Boolean = false
 
     fun addMounth(mounth: Int){
-        this.mounths.add(Mounth(null,mounth, arrayListOf(), null, null))
+        this.mounths.add(Mounth(null,mounth, arrayListOf(), 0,null, null))
         Events.sortMonth(mounths)
     }
 }

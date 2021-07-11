@@ -21,6 +21,7 @@ data class Events(
             }
             return listYear
         }
+
         fun sortMonth(listMounth: ArrayList<Mounth>): List<Mounth>{
             listMounth.sortBy {
                 it.mounthNumber
@@ -31,6 +32,15 @@ data class Events(
                 counter++
             }
             return listMounth
+        }
+
+        fun sortDay(listDay: ArrayList<Day>): List<Day>{
+            var counter =0
+            listDay.forEach {
+                it.dayId = counter
+                counter++
+            }
+            return listDay
         }
     }
 }
