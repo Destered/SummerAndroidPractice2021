@@ -10,6 +10,7 @@
     <color name="blackgrey">#28292D</color>
     <color name="clearlywhite">#FFFFFF</color>
     <color name="gray">#333333</color>
+    <color name="backgroundItems">#37474f</color>
 
 
 </resources>
