@@ -9,7 +9,7 @@ data class Events(
     fun addYear(context: Context, year: Int){
         this.years.add(Year(null,year, arrayListOf<Mounth>(), null,null))
         sortYear(years)
-        Singleton.saveData(context)
+        /*Singleton.saveData(context)*/
     }
 
     companion object {

@@ -109,4 +109,9 @@ class LastScreen : AppCompatActivity() {
     fun onClickBack() {
         this.finish()
     }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
+    }
 }
