@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.databinding.ThirdScreenBinding
-import com.whiteelephant.monthpicker.MonthPickerDialog
 import java.util.*
 
 class ThirdScreen : AppCompatActivity() {

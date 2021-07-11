@@ -1,8 +1,9 @@
 package com.dester.summerandroidpractice2021
 
 import androidx.recyclerview.widget.DiffUtil
+import com.dester.summerandroidpractice2021.data.models.Day
 
-class DayDiffUtilCallBack(val oldList:ArrayList<com.dester.summerandroidpractice2021.data.models.Day>, val newList:ArrayList<com.dester.summerandroidpractice2021.data.models.Day>): DiffUtil.Callback() {
+class DayDiffUtilCallBack(val oldList:ArrayList<Day>, val newList:ArrayList<Day>): DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }
