@@ -3,8 +3,8 @@ package com.dester.summerandroidpractice2021.code_sample
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dester.summerandroidpractice2021.databinding.RecyclerviewPhotoyearBinding
 import com.dester.summerandroidpractice2021.code_sample.model.Info
+import com.dester.summerandroidpractice2021.databinding.RvPhotoyearBinding
 import java.util.ArrayList
 
 class NewCustomAdapter() : RecyclerView.Adapter<NewCustomAdapter.VH>() {
@@ -32,7 +32,7 @@ class NewCustomAdapter() : RecyclerView.Adapter<NewCustomAdapter.VH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = RecyclerviewPhotoyearBinding.inflate(layoutInflater, parent, false)
+        val binding = RvPhotoyearBinding.inflate(layoutInflater, parent, false)
         return VH(binding)
     }
 
@@ -41,11 +41,10 @@ class NewCustomAdapter() : RecyclerView.Adapter<NewCustomAdapter.VH>() {
     }
 
 
-    inner class VH(private val binding: RecyclerviewPhotoyearBinding) :
+    inner class VH(private val binding: RvPhotoyearBinding) :
             RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int, info: Info) {
-            binding.tvear.text = info.name
-            binding.description.text = info.description
+            binding.tvYear.text = info.name
         }
     }
 }
