@@ -84,10 +84,9 @@ class ThirdScreen : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val newList: ArrayList<Day> = database.years[yearNumber].mounths[monthNumber].days
-        val dayDiffUtilCallBack = DayDiffUtilCallBack(adapter.getList(), newList)
-        val diffUtilResult = DiffUtil.calculateDiff(dayDiffUtilCallBack)
-        adapter.setDays(newList)
-        diffUtilResult.dispatchUpdatesTo(adapter)
+        adapter.setItems(newList)
+        adapter.notifyDataSetChanged()
+
     }
 
     override fun onPause() {

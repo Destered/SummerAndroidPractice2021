@@ -12,7 +12,7 @@ class DayAdapter(
     val openFourthActivity:((Int) -> Unit),
     val favoriteButton:((Int) -> Unit)
 ): RecyclerView.Adapter<DayAdapter.DayHolder>() {
-    val dayList = ArrayList<Day>()
+    var dayList = ArrayList<Day>()
 
     inner class DayHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = DayItemBinding.bind(item)
@@ -58,6 +58,11 @@ class DayAdapter(
             list.add(it)
         }
         return list
+    }
+
+    fun setItems(newList: ArrayList<Day>){
+        dayList.clear()
+        dayList.addAll(newList)
     }
 
     fun setDays(list: ArrayList<Day>){
