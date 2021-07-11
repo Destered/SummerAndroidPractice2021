@@ -21,9 +21,8 @@ class DayAdapter(
                     binding.photo.setImageDrawable(Utils.stringToImage(it))
                 }
                     if(day.isFavorite) {
-
+                        binding.btnStar.setImageResource(android.R.drawable.btn_star_big_on)
                     }
-                    binding.description.text = day.description
                     binding.btnStar.setOnClickListener {
                         favoriteButton.invoke(day.dayId ?: 0)
                     }
