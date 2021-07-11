@@ -86,7 +86,8 @@ class ScreenSecond : AppCompatActivity() {
     }
     fun openDayActivity(monthNumber:Int){
         val intent = Intent(this,ThirdScreen::class.java)
-        intent.putExtra("monthNumber",monthNumber)
+        intent.putExtra("monthNumber", monthNumber)
+        intent.putExtra("yearNumber", yearNumber)
         startActivity(intent)
     }
     private fun init() {

@@ -6,12 +6,14 @@ data class Mounth(
     var mounthId: Int?,
     var mounthNumber: Int,
     var days: ArrayList<Day>,
+    var countDays: Int,
     var description: String?,
     var favoritePhoto: String?
 ){
     var isFavorite: Boolean = false
 
-    fun addDay(date: EventDate, title: String, description: String?, imageString: String?){
-        this.days.add(Day(date, title, description, imageString, days.size))
+    fun addDay(){
+        this.days.add(Day(null,null, null))
+        Events.sortDay(days)
     }
 }
