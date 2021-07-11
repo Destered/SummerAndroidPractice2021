@@ -3,12 +3,10 @@ package com.dester.summerandroidpractice2021
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dester.summerandroidpractice2021.data.models.Day
-import com.dester.summerandroidpractice2021.data.models.Events
-import com.dester.summerandroidpractice2021.data.models.Singleton
-import com.dester.summerandroidpractice2021.data.models.Year
+import com.dester.summerandroidpractice2021.data.models.*
 import com.dester.summerandroidpractice2021.databinding.ThirdScreenBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -20,7 +18,7 @@ class ThirdScreen : AppCompatActivity() {
     var monthNumber = 0
     var yearNumber = 0
     lateinit var binding: ThirdScreenBinding
-    private val adapter = DayAdapter({ number -> openFourthActivity(number) })
+    private val adapter = DayAdapter({ number -> openFourthActivity(number) }, { number -> favoriteButton(number) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +54,21 @@ class ThirdScreen : AppCompatActivity() {
         val diffUtilResult = DiffUtil.calculateDiff(dayDiffUtilCallBack)
         adapter.setDays(newList)
         diffUtilResult.dispatchUpdatesTo(adapter)
+    }
+
+    fun favoriteButton(dayNumber: Int){
+        val day = database.years[yearNumber].mounths[monthNumber].days[dayNumber]
+        if(day.imageSourceView == null){
+            Toast.makeText(applicationContext, "Нужно выбрать изображение", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            binding.placeUnderImageMonth.setImageDrawable(Utils.stringToImage(day.imageSourceView ?: ""))
+            database.years[yearNumber].mounths[monthNumber].days.forEach {
+                it.isFavorite = false
+            }
+            day.isFavorite = true
+            database.years[yearNumber].mounths[monthNumber].favoritePhoto = day.imageSourceView
+        }
     }
 
     fun openFourthActivity(dayNumber: Int){
