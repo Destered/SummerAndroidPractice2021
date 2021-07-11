@@ -79,26 +79,26 @@
                 <ImageView
                     android:id="@+id/frame"
                     android:layout_width="250dp"
-                    android:layout_height="180dp"
+                    android:layout_height="160dp"
                     android:layout_marginStart="50dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="50dp"
                     app:layout_constraintBottom_toTopOf="@+id/description_of_the_month"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.491"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_frame" />
+                    app:srcCompat="@drawable/ic_frame_thirdscreen" />
 
                 <ImageView
                     android:id="@+id/place_under_image_month"
-                    android:layout_width="240dp"
-                    android:layout_height="130dp"
+                    android:layout_width="231dp"
+                    android:layout_height="138dp"
                     android:foregroundGravity="center"
                     app:layout_constraintBottom_toBottomOf="@+id/frame"
                     app:layout_constraintEnd_toEndOf="@+id/frame"
                     app:layout_constraintStart_toStartOf="@+id/frame"
                     app:layout_constraintTop_toTopOf="@+id/frame"
-                    app:layout_constraintVertical_bias="0.3"
                     tools:srcCompat="@tools:sample/avatars" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

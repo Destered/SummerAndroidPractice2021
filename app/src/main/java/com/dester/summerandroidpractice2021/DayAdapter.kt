@@ -38,11 +38,15 @@ class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
 
     fun getList(): ArrayList<Day>
     {
-        return dayList
+        val list = ArrayList<Day>()
+        dayList.forEach {
+            list.add(it)
+        }
+        return list
     }
 
     fun setDays(list: ArrayList<Day>){
         dayList.clear()
-        dayList = list
+        dayList.addAll(list)
     }
 }
