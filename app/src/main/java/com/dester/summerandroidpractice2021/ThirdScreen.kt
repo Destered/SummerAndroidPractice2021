@@ -1,5 +1,6 @@
 package com.dester.summerandroidpractice2021
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.DiffUtil
@@ -10,15 +11,8 @@ import java.util.*
 
 class ThirdScreen : AppCompatActivity() {
 
-    val listPhoto = arrayListOf<Day>(
-        Day(R.drawable.photo_korzh,"1"),
-        Day(R.drawable.moto_telka,"2"),
-        Day(R.drawable.photo1,"3")
-    )
-
-    var index = 0
     lateinit var binding: ThirdScreenBinding
-    private val adapter = DayAdapter()
+    private val adapter = DayAdapter({ number -> openFourthActivity(number) })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +21,24 @@ class ThirdScreen : AppCompatActivity() {
 
         binding.rcView.layoutManager = LinearLayoutManager(this@ThirdScreen)
         binding.rcView.adapter = adapter
+        binding.btnBack.setOnClickListener {
+            this.finish()
+        }
         binding.btnAddDay.setOnClickListener {
             val newList = adapter.getList()
 
-            if(index > 2) index = 0
-            newList.add(listPhoto[index])
-            index++
+
 
             val dayDiffUtilCallBack = DayDiffUtilCallBack(adapter.getList(), newList)
             val diffUtilsResult = DiffUtil.calculateDiff(dayDiffUtilCallBack)
             adapter.setDays(newList)
             diffUtilsResult.dispatchUpdatesTo(adapter)
         }
+    }
+
+    fun openFourthActivity(dayNumber: Int){
+//        val intent = Intent(this,ThirdScreen::class.java)
+//        intent.putExtra("yearNumber",dayNumber)
+//        startActivity(intent)
     }
 }

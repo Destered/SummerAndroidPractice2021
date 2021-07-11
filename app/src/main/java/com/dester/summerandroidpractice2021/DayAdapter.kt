@@ -4,17 +4,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 
-class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
-    var dayList = ArrayList<Day>()
+class DayAdapter(
+    val openFourthActivity:((Int) -> Unit)
+): RecyclerView.Adapter<DayAdapter.DayHolder>() {
+    var dayList = ArrayList<com.dester.summerandroidpractice2021.data.models.Day>()
 
-    class DayHolder(item: View): RecyclerView.ViewHolder(item) {
+    inner class DayHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = DayItemBinding.bind(item)
 
-        fun bind(day: Day){
-         binding.photo.setImageResource(day.imageId)
-         binding.description.text = day.desc
+        fun bind(day: com.dester.summerandroidpractice2021.data.models.Day){
+            binding.photo.setImageDrawable(day.imageSourceView?.let { Utils().stringToImage(it) })
+            binding.description.text = day.description
+            binding.titleDay.text = day.title
+            binding.root.setOnClickListener {
+                day.itemId?.let { it1 -> openFourthActivity.invoke(it1) }
+            }
         }
     }
 
@@ -31,21 +38,21 @@ class DayAdapter: RecyclerView.Adapter<DayAdapter.DayHolder>() {
         return dayList.size
     }
 
-    fun addDay(day: Day){
+    fun addDay(day: com.dester.summerandroidpractice2021.data.models.Day){
         dayList.add(day)
         notifyDataSetChanged()
     }
 
-    fun getList(): ArrayList<Day>
+    fun getList(): ArrayList<com.dester.summerandroidpractice2021.data.models.Day>
     {
-        val list = ArrayList<Day>()
+        val list = ArrayList<com.dester.summerandroidpractice2021.data.models.Day>()
         dayList.forEach {
             list.add(it)
         }
         return list
     }
 
-    fun setDays(list: ArrayList<Day>){
+    fun setDays(list: ArrayList<com.dester.summerandroidpractice2021.data.models.Day>){
         dayList.clear()
         dayList.addAll(list)
     }
