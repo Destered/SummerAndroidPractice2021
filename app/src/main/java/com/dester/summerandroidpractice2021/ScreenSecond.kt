@@ -22,18 +22,18 @@ class ScreenSecond : AppCompatActivity() {
     private val adapter = MonthAdapter ({ number -> openDayActivity(number) },{number ->favoriteMonth(number)})
     companion object {
         val monthNameList = listOf(
-            "january",
-            "february",
-            "march",
-            "april",
-            "may",
-            "june",
-            "jule",
-            "august",
-            "september",
-            "october",
-            "november",
-            "december"
+            "январь",
+            "февраль",
+            "март",
+            "апрель",
+            "май",
+            "июнь",
+            "июль",
+            "август",
+            "сентябрь",
+            "октябрь",
+            "ноябрь",
+            "декабрь"
         )
     }
 

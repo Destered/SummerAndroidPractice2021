@@ -10,9 +10,9 @@
         android:pathData="M5,0L314,0A5,5 0,0 1,319 5L319,175A5,5 0,0 1,314 180L5,180A5,5 0,0 1,0 175L0,5A5,5 0,0 1,5 0z"
         android:strokeWidth="12"
         android:fillColor="#00000000"
-        android:strokeColor="#37474f"/>
+        android:strokeColor="#F2EDE8"/>
   </group>
   <path
       android:pathData="M0,174h319v34h-319z"
-      android:fillColor="#37474f"/>
+      android:fillColor="#F2EDE8"/>
 </vector>

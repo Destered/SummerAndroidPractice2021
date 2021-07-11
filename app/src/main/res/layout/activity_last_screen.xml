@@ -55,7 +55,8 @@
                     android:layout_width="327dp"
                     android:layout_height="352dp"
                     android:layout_marginTop="80dp"
-                    android:background="@drawable/ic_emptyframe"
+                    android:background="@drawable/ic_framelast"
+                    android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +89,7 @@
                     android:layout_width="343dp"
                     android:layout_height="153dp"
                     android:layout_marginTop="368dp"
-                    android:background="@color/clearlywhite"
+                    android:background="@color/beige"
                     android:gravity="top"
                     android:hint="Enter text to save..."
                     android:inputType="textCapSentences|textMultiLine"
