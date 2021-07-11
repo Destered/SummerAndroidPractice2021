@@ -21,15 +21,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var database: Events
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
-
-    private val imageIdList = listOf(
-        R.drawable.photo1,
-        R.drawable.photo2,
-        R.drawable.photo3,
-        R.drawable.photo4
-    )
-    private var index = 0
-    private var yeartemp = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = Singleton.getInstance(this)
@@ -43,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val builder = MonthPickerDialog.Builder(
             this,
             { _, selectedYear ->
-                database.addYear(selectedYear)
+                database.addYear(this,selectedYear)
                 val newList: ArrayList<Year> = database.years
                 val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
                 val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
@@ -75,10 +66,5 @@ class MainActivity : AppCompatActivity() {
                 showYearPicker()
             }
         }
-    }
-
-    override fun onPause() {
-        Singleton.saveData(this)
-        super.onPause()
     }
 }

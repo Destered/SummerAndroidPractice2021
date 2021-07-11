@@ -49,7 +49,7 @@ class ScreenSecond : AppCompatActivity() {
             this,
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
-                    database.years[yearNumber].addMounth(selectedMonth)
+                    database.years[yearNumber].addMounth(this@ScreenSecond,selectedMonth)
                     val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
                     val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
                     val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)

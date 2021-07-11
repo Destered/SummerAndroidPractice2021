@@ -1,12 +1,15 @@
 package com.dester.summerandroidpractice2021.data.models
 
+import android.content.Context
+
 data class Events(
     var years: ArrayList<Year> = arrayListOf<Year>()
 )
 {
-    fun addYear(year: Int){
+    fun addYear(context: Context, year: Int){
         this.years.add(Year(null,year, arrayListOf<Mounth>(), null,null))
         sortYear(years)
+        Singleton.saveData(context)
     }
 
     companion object {
