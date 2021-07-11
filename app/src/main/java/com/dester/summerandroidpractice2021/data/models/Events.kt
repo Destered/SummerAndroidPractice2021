@@ -4,19 +4,22 @@ data class Events(
     var years: MutableList<Year> = mutableListOf<Year>()
 )
 {
-    fun addYear(year: Int, description: String?){
-        this.years.add(Year(year, mutableListOf<Mounth>(), description))
+    fun addYear(year: Int){
+        this.years.add(Year(null,year, mutableListOf<Mounth>(), null,null))
+        sortYear(years)
     }
 
-    fun sort(){
-        this.years.sortBy { it.year }
-        this.years.forEach{
-            it.mounths.sortBy { it.mounth }
-        }
-        this.years.forEach{
-            it.mounths.forEach{
-                it.days.sortBy { it.date.eventDay }
+    companion object {
+        fun sortYear(listYear: MutableList<Year>): List<Year> {
+            listYear.sortBy {
+                it.yearNumber
             }
+            var counter = 0
+            listYear.forEach {
+                it.yearId = counter
+                counter++
+            }
+            return listYear
         }
     }
 }
