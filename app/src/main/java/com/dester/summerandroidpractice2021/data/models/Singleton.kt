@@ -17,5 +17,9 @@ class Singleton {
 
         private fun buildDatabase(context: Context) =
             Database(context).getItems()
+
+        fun saveData(context: Context){
+            Database(context).add(INSTANCE!!)
+        }
     }
 }
