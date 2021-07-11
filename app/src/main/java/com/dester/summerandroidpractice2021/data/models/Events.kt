@@ -5,7 +5,7 @@ data class Events(
 )
 {
     fun addYear(year: Int){
-        this.years.add(Year(null,year, mutableListOf<Mounth>(), null,null))
+        this.years.add(Year(null,year, arrayListOf<Mounth>(), null,null))
         sortYear(years)
     }
 
@@ -20,6 +20,17 @@ data class Events(
                 counter++
             }
             return listYear
+        }
+        fun sortMonth(listMounth: ArrayList<Mounth>): List<Mounth>{
+            listMounth.sortBy {
+                it.mounthNumber
+            }
+            var counter = 0
+            listMounth.forEach{
+                it.mounthId = counter
+                counter++
+            }
+            return listMounth
         }
     }
 }

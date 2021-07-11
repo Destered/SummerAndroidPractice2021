@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.data.models.Events
 import com.dester.summerandroidpractice2021.data.models.Mounth
+import com.dester.summerandroidpractice2021.data.models.Singleton
 import com.dester.summerandroidpractice2021.databinding.ActivityScreenSecondBinding
 import com.whiteelephant.monthpicker.MonthPickerDialog
 import java.util.*
@@ -17,6 +18,7 @@ import kotlin.collections.ArrayList
 class ScreenSecond : AppCompatActivity() {
     lateinit var binding: ActivityScreenSecondBinding
     lateinit var database: Events
+    var yearNumber = 0
     private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
     private val imageIdList = listOf(R.drawable.january,
         R.drawable.february,
@@ -31,24 +33,28 @@ class ScreenSecond : AppCompatActivity() {
         R.drawable.november,
         R.drawable.december
     )
-    private val monthNameList = listOf("january",
-        "february",
-        "march",
-        "april",
-        "may",
-        "june",
-        "jule",
-        "august",
-        "september",
-        "october",
-        "november",
-        "december"
-    )
+    companion object {
+        val monthNameList = listOf(
+            "january",
+            "february",
+            "march",
+            "april",
+            "may",
+            "june",
+            "jule",
+            "august",
+            "september",
+            "october",
+            "november",
+            "december"
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScreenSecondBinding.inflate(layoutInflater)
-        val yearNumber = intent.getIntExtra("yearNumber",0)
+        database = Singleton.getInstance(this)
+        yearNumber = intent.getIntExtra("yearNumber",0)
         setContentView(binding.root)
         init()
     }
@@ -58,8 +64,8 @@ class ScreenSecond : AppCompatActivity() {
             this,
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
-                    val newList: ArrayList<Mounth> = adapter.getList()
-                    newList.add(Mounth(imageIdList[1], arrayListOf(),monthNameList[selectedMonth]))
+                    database.years[yearNumber].addMounth(selectedMonth)
+                    val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
                     val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
                     val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
                     adapter.setItems(newList)
@@ -84,6 +90,7 @@ class ScreenSecond : AppCompatActivity() {
         startActivity(intent)
     }
     private fun init() {
+        adapter.setItems(database.years[yearNumber].mounths)
         binding.apply {
             rvphotoMonth.layoutManager = GridLayoutManager(this@ScreenSecond, 2)
             rvphotoMonth.adapter = adapter
