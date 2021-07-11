@@ -53,7 +53,7 @@ class ScreenSecond : AppCompatActivity() {
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
                     val newList: ArrayList<InfoMonth> = adapter.getList()
-                    newList.add(InfoMonth(imageIdList[1], selectedMonth.toString(),monthNameList[selectedMonth]))
+                    newList.add(InfoMonth(imageIdList[1], monthNameList[selectedMonth],monthNameList[selectedMonth]))
                     val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
                     val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
                     adapter.setItems(newList)
