@@ -9,7 +9,8 @@ import com.dester.summerandroidpractice2021.data.models.Utils
 import com.dester.summerandroidpractice2021.databinding.DayItemBinding
 
 class DayAdapter(
-    val openFourthActivity:((Int) -> Unit)
+    val openFourthActivity:((Int) -> Unit),
+    val favoriteButton:((Int) -> Unit)
 ): RecyclerView.Adapter<DayAdapter.DayHolder>() {
     val dayList = ArrayList<Day>()
 
@@ -19,8 +20,14 @@ class DayAdapter(
                 day.imageSourceView?.let {
                     binding.photo.setImageDrawable(Utils.stringToImage(it))
                 }
+                    if(day.isFavorite) {
+
+                    }
                     binding.description.text = day.description
-                    binding.root.setOnClickListener {
+                    binding.btnStar.setOnClickListener {
+                        favoriteButton.invoke(day.dayId ?: 0)
+                    }
+                    binding.photo.setOnClickListener {
                         openFourthActivity.invoke(day.dayId ?: 0)
                     }
             }

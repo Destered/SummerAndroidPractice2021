@@ -20,19 +20,6 @@ class ScreenSecond : AppCompatActivity() {
     lateinit var database: Events
     var yearNumber = 0
     private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
-    private val imageIdList = listOf(R.drawable.january,
-        R.drawable.february,
-        R.drawable.mart,
-        R.drawable.april,
-        R.drawable.may,
-        R.drawable.june,
-        R.drawable.jule,
-        R.drawable.august,
-        R.drawable.september,
-        R.drawable.october,
-        R.drawable.november,
-        R.drawable.december
-    )
     companion object {
         val monthNameList = listOf(
             "january",
@@ -102,6 +89,19 @@ class ScreenSecond : AppCompatActivity() {
                 this@ScreenSecond.finish()
             }
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
+        val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
+        val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+        adapter.setItems(newList)
+        resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+    }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
     }
 }

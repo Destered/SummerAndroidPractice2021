@@ -3,13 +3,14 @@ package com.dester.summerandroidpractice2021.data.models
 import android.content.Context
 
 data class Events(
-    var years: ArrayList<Year> = arrayListOf<Year>()
+    var years: ArrayList<Year> = arrayListOf<Year>(),
+    var yearsSelectedList: ArrayList<Int> = arrayListOf()
 )
 {
     fun addYear(context: Context, year: Int){
         this.years.add(Year(null,year, arrayListOf<Mounth>(), null,null))
         sortYear(years)
-        Singleton.saveData(context)
+        /*Singleton.saveData(context)*/
     }
 
     companion object {

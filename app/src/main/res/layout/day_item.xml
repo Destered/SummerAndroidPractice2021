@@ -7,14 +7,14 @@
     android:background="#00424242">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="#00606060"
-        app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,20 +32,31 @@
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF">
 
-                <ImageButton
-                    android:id="@+id/btn_frame"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:background="#FFFFFF"
-                    app:srcCompat="@drawable/ic_frame_day" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/photo"
-                    android:layout_width="140dp"
-                    android:layout_height="88dp"
-                    android:layout_gravity="center"
-                    android:visibility="visible"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                    <ImageButton
+                        android:id="@+id/btn_frame"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        app:srcCompat="@drawable/ic_frame" />
+
+                    <ImageView
+                        android:id="@+id/photo"
+                        android:layout_width="146dp"
+                        android:layout_height="82dp"
+                        android:scaleType="centerCrop"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.58"
+                        app:layout_constraintStart_toStartOf="@+id/btn_frame"
+                        app:layout_constraintTop_toTopOf="@+id/btn_frame"
+                        app:layout_constraintVertical_bias="0.13"
+                        app:srcCompat="@drawable/ic_emptyframe" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </FrameLayout>
 

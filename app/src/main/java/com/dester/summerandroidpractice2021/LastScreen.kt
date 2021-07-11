@@ -31,7 +31,6 @@ class LastScreen : AppCompatActivity() {
     var monthNumber = 0
     var dayNumber = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = Singleton.getInstance(this)
@@ -113,4 +112,8 @@ class LastScreen : AppCompatActivity() {
         this.finish()
     }
 
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
+    }
 }

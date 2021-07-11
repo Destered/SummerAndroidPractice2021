@@ -4,10 +4,12 @@ package com.dester.summerandroidpractice2021
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dester.summerandroidpractice2021.data.models.Events
+import com.dester.summerandroidpractice2021.data.models.Mounth
 import com.dester.summerandroidpractice2021.data.models.Singleton
 import com.dester.summerandroidpractice2021.data.models.Year
 import com.dester.summerandroidpractice2021.databinding.ActivityMainBinding
@@ -21,15 +23,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var database: Events
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
-
-    private val imageIdList = listOf(
-        R.drawable.photo1,
-        R.drawable.photo2,
-        R.drawable.photo3,
-        R.drawable.photo4
-    )
-    private var index = 0
-    private var yeartemp = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = Singleton.getInstance(this)
@@ -43,12 +36,17 @@ class MainActivity : AppCompatActivity() {
         val builder = MonthPickerDialog.Builder(
             this,
             { _, selectedYear ->
-                database.addYear(this,selectedYear)
-                val newList: ArrayList<Year> = database.years
-                val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
-                val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                adapter.setItems(newList)
-                resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                if(database.yearsSelectedList.contains(selectedYear)){
+                    Toast.makeText(this,"Этот год уже существует",Toast.LENGTH_SHORT).show()
+                }else {
+                    database.addYear(this, selectedYear)
+                    database.yearsSelectedList.add(selectedYear)
+                    val newList: ArrayList<Year> = database.years
+                    val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
+                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+                    adapter.setItems(newList)
+                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                }
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH)
@@ -75,5 +73,19 @@ class MainActivity : AppCompatActivity() {
                 showYearPicker()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val newList: ArrayList<Year> = database.years
+        val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
+        val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+        adapter.setItems(newList)
+        resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+    }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
     }
 }
