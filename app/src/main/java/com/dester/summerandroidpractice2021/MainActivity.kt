@@ -37,35 +37,23 @@ class MainActivity : AppCompatActivity() {
             this,
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
-
+                    val newList: ArrayList<Year> = adapter.getList()
+                    newList.add(Year(imageIdList[index], selectedYear.toString()))
+                    val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
+                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+                    adapter.setItems(newList)
+                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
                 }
-
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH)
         )
 
-        val newList: ArrayList<Year> = adapter.getList()
+
         builder.setMinYear(2000)
             .setMaxYear(calendar.get(Calendar.YEAR))
             .showYearOnly()
-            .setOnYearChangedListener { year ->
-                /*if(yearContains(year){
-                Toast.makeText("Год уже занят").show()
-                }else{
-                    newList.add(Year(imageIdList[index],year.toString()))
-                    val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(),newList)
-                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                    adapter.setItems(newList)
-                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
-                }
-               */
-                newList.add(Year(imageIdList[index], year.toString()))
-                val diffUtilsCallback = YearDiffUtilsCallback(adapter.getList(), newList)
-                val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                adapter.setItems(newList)
-                resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
-            }.build()
+            .build()
             .show()
     }
 
