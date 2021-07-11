@@ -49,14 +49,21 @@ class ScreenSecond : AppCompatActivity() {
         val calendar: Calendar = Calendar.getInstance()
         val builder = MonthPickerDialog.Builder(
             this,
+
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
-                    database.years[yearNumber].addMounth(this@ScreenSecond,selectedMonth)
-                    val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
-                    val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
-                    val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
-                    adapter.setItems(newList)
-                    resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                    if(database.monthSelectedList.contains(selectedMonth)){
+                        Toast.makeText(this@ScreenSecond, "Этот месяц уже существует",Toast.LENGTH_SHORT).show()
+                    }
+                    else {
+                        database.years[yearNumber].addMounth(this@ScreenSecond, selectedMonth)
+                        database.monthSelectedList.add(selectedMonth)
+                        val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
+                        val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
+                        val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
+                        adapter.setItems(newList)
+                        resultDiffUtilsCallback.dispatchUpdatesTo(adapter)
+                    }
                 }
 
             },

@@ -80,7 +80,7 @@
                     android:backgroundTint="#00FFFFFF"
                     app:layout_constraintEnd_toEndOf="@+id/iv_recycle_month"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@android:drawable/btn_star" />
+                    app:srcCompat="@android:drawable/btn_star_big_off" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,7 +4,8 @@ import android.content.Context
 
 data class Events(
     var years: ArrayList<Year> = arrayListOf<Year>(),
-    var yearsSelectedList: ArrayList<Int> = arrayListOf()
+    var yearsSelectedList: ArrayList<Int> = arrayListOf(),
+    var monthSelectedList: ArrayList<Int> = arrayListOf()
 )
 {
     fun addYear(context: Context, year: Int){
