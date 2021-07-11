@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000"
+        android:background="@color/gray"
         tools:context=".LastScreen">
 
         <androidx.core.widget.NestedScrollView
@@ -31,73 +31,72 @@
 
                 <ImageView
                     android:id="@+id/btn_back"
-                    android:layout_width="35dp"
-                    android:layout_height="33dp"
+                    android:layout_width="48dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/__1" />
+                    app:srcCompat="@drawable/ic_btn_back" />
 
                 <ImageView
                     android:id="@+id/btn_add"
-                    android:layout_width="255dp"
-                    android:layout_height="101dp"
-                    android:layout_marginStart="16dp"
-                    android:background="@drawable/__15"
+                    android:layout_width="126dp"
+                    android:layout_height="85dp"
+                    android:layout_marginStart="48dp"
+                    android:background="@drawable/btn_addday"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/inputText"
-                    app:layout_constraintVertical_bias="0.352" />
+                    app:layout_constraintVertical_bias="0.653" />
 
                 <ImageView
                     android:id="@+id/imgv2"
-                    android:layout_width="369dp"
-                    android:layout_height="371dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_width="327dp"
+                    android:layout_height="352dp"
+                    android:layout_marginTop="80dp"
+                    android:srcCompat="@drawable/ic_emptyframe"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imgv3"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/bSaveText"
+                    android:layout_width="126dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="52dp"
+                    android:background="@drawable/btn_savetext"
+                    android:text="."
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputText"
+                    app:layout_constraintVertical_bias="0.673" />
 
                 <ImageView
-                    android:id="@+id/imgv3"
-                    android:layout_width="414dp"
-                    android:layout_height="634dp"
-                    android:layout_marginTop="16dp"
+                    android:id="@+id/imageView9"
+                    android:layout_width="384dp"
+                    android:layout_height="553dp"
+                    android:layout_marginTop="68dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/_2" />
+                    app:srcCompat="@drawable/frame" />
 
                 <EditText
                     android:id="@+id/inputText"
-                    android:layout_width="411dp"
-                    android:layout_height="165dp"
-                    android:layout_marginTop="372dp"
-                    android:background="@drawable/_6"
+                    android:layout_width="343dp"
+                    android:layout_height="153dp"
+                    android:layout_marginTop="368dp"
+                    android:background="@color/clearlywhite"
                     android:gravity="top"
                     android:hint="Enter text to save..."
                     android:inputType="textCapSentences|textMultiLine"
                     android:minHeight="150dp"
                     android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imgv2" />
-
-                <Button
-                    android:id="@+id/bSaveText"
-                    android:layout_width="109dp"
-                    android:layout_height="99dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/bfortext1"
-                    android:text="."
-                    android:layout_gravity="end"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inputText"
-                    app:layout_constraintVertical_bias="0.272" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
