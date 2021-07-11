@@ -5,7 +5,6 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -38,6 +37,9 @@ class LastScreen : AppCompatActivity() {
         bindingClass = ActivityLastScreenBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
         init()
+        bindingClass.bSaveText.setOnClickListener{
+            database.years[yearNumber].mounths[monthNumber].days[dayNumber].description = bindingClass.inputText.text.toString()
+        }
         bindingClass.btnBack.setOnClickListener {
             onClickBack()
         }
@@ -54,7 +56,7 @@ class LastScreen : AppCompatActivity() {
         dayNumber = intent.getIntExtra("dayNumber", 0)
         dayInfo = database.years[yearNumber].mounths[monthNumber].days[dayNumber]
         dayInfo.imageSourceView?.let { bindingClass.imgv2.setImageDrawable(Utils.stringToImage(it)) }
-
+        bindingClass.inputText.setText(dayInfo.description ?:"")
 
     }
 
