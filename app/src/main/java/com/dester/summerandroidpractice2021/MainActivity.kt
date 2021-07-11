@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dester.summerandroidpractice2021.data.models.Events
 import com.dester.summerandroidpractice2021.data.models.Singleton
 import com.dester.summerandroidpractice2021.databinding.ActivityMainBinding
 import com.whiteelephant.monthpicker.MonthPickerDialog
@@ -17,6 +18,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     var myYear = SimpleDateFormat("yyyy").format(Date()).toInt()
     lateinit var binding: ActivityMainBinding
+    lateinit var database: Events
     private val adapter = YearAdapter ({ number -> openMonthActivity(number) })
 
     private val imageIdList = listOf(
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private var yeartemp = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        database = Singleton.getInstance(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
