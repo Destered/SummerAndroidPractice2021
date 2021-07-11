@@ -43,6 +43,7 @@ class ScreenSecond : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScreenSecondBinding.inflate(layoutInflater)
+        val yearNumber = intent.getIntExtra("yearNumber",0)
         setContentView(binding.root)
         init()
     }
