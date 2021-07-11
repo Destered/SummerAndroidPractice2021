@@ -8,8 +8,8 @@ data class Day(
     var date: EventDate,
     var title: String,
     var description: String?,
-    var imageSourceView: String?
-
+    var imageSourceView: String?,
+    var dayId: Int?
 ){
     var isFavorite = false
 }

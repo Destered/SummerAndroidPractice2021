@@ -1,10 +1,14 @@
 package com.dester.summerandroidpractice2021
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dester.summerandroidpractice2021.data.models.Events
+import com.dester.summerandroidpractice2021.data.models.Mounth
 import com.dester.summerandroidpractice2021.databinding.ActivityScreenSecondBinding
 import com.whiteelephant.monthpicker.MonthPickerDialog
 import java.util.*
@@ -12,7 +16,8 @@ import kotlin.collections.ArrayList
 
 class ScreenSecond : AppCompatActivity() {
     lateinit var binding: ActivityScreenSecondBinding
-    private val adapter = MonthAdapter()
+    lateinit var database: Events
+    private val adapter = MonthAdapter ({ number -> openDayActivity(number) })
     private val imageIdList = listOf(R.drawable.january,
         R.drawable.february,
         R.drawable.mart,
@@ -53,8 +58,8 @@ class ScreenSecond : AppCompatActivity() {
             this,
             object : MonthPickerDialog.OnDateSetListener {
                 override fun onDateSet(selectedMonth: Int, selectedYear: Int) {
-                    val newList: ArrayList<InfoMonth> = adapter.getList()
-                    newList.add(InfoMonth(imageIdList[1], selectedMonth.toString(),monthNameList[selectedMonth]))
+                    val newList: ArrayList<Mounth> = adapter.getList()
+                    newList.add(Mounth(imageIdList[1], arrayListOf(),monthNameList[selectedMonth]))
                     val diffUtilsCallback = DiffUtilMonth(adapter.getList(), newList)
                     val resultDiffUtilsCallback = DiffUtil.calculateDiff(diffUtilsCallback)
                     adapter.setItems(newList)
@@ -73,8 +78,11 @@ class ScreenSecond : AppCompatActivity() {
             .build()
             .show()
     }
-
-
+    fun openDayActivity(monthNumber:Int){
+        val intent = Intent(this,ThirdScreen::class.java)
+        intent.putExtra("monthNumber",monthNumber)
+        startActivity(intent)
+    }
     private fun init() {
         binding.apply {
             rvphotoMonth.layoutManager = GridLayoutManager(this@ScreenSecond, 2)
@@ -82,6 +90,10 @@ class ScreenSecond : AppCompatActivity() {
             btnaddMonth.setOnClickListener {
                 showMonthPicker()
             }
+            btnBackmonth.setOnClickListener {
+                this@ScreenSecond.finish()
+            }
         }
+
     }
 }
