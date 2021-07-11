@@ -15,7 +15,7 @@ class Utils{
             fun imageToString(image: Drawable): String {
                 var bitmap = image.toBitmap()
                 val byteStram = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteStram)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteStram)
                 val byteArray = byteStram.toByteArray()
                 val baseString = Base64.encodeToString(byteArray, Base64.DEFAULT)
                 return baseString
