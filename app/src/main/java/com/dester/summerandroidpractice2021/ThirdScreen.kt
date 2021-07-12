@@ -39,7 +39,7 @@ class ThirdScreen : AppCompatActivity() {
         }
         binding.rcView.layoutManager = GridLayoutManager(this@ThirdScreen,2)
         binding.rcView.adapter = adapter
-
+        binding.tvMonth.text =ScreenSecond.monthNameList[database.years[yearNumber].mounths[monthNumber].mounthNumber]
         binding.btnBack.setOnClickListener {
             this.finish()
         }
