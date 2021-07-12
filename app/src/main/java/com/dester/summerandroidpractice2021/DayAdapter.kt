@@ -20,18 +20,19 @@ class DayAdapter(
                 day.imageSourceView?.let {
                     binding.photo.setImageDrawable(Utils.stringToImage(it))
                 }
-                if(day.isFavorite) {
-                    binding.btnStar.setImageResource(android.R.drawable.btn_star_big_on)
-                }
-                binding.btnStar.setOnClickListener {
-                    favoriteButton.invoke(day.dayId ?: 0)
-                }
-                binding.photo.setOnClickListener {
-                    openFourthActivity.invoke(day.dayId ?: 0)
-                }
 
+                    binding.btnStar.setOnClickListener {
+                        if(day.isFavorite) {
+                        binding.btnStar.setImageResource(android.R.drawable.btn_star_big_on)
+                    }
+                        favoriteButton.invoke(day.dayId ?: 0)
+
+                    }
+                    binding.photo.setOnClickListener {
+                        openFourthActivity.invoke(day.dayId ?: 0)
+                    }
+            }
         }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.day_item, parent, false)

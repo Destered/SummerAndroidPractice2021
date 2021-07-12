@@ -17,11 +17,11 @@ class MonthAdapter(val openDayActivity:((Int) -> Unit),val favoriteMonth:((Int)-
             photoMonth.favoritePhoto?.let {
                 ivRecycleMonth.setImageDrawable(Utils.stringToImage(it))
             }
-            if(photoMonth.isFavorite){
-                btnFavoriteMonth.setImageResource(android.R.drawable.btn_star_big_on)
-            }
             btnFavoriteMonth.setOnClickListener {
                 favoriteMonth.invoke(photoMonth.mounthId ?: 0)
+            }
+            if(photoMonth.isFavorite){
+                btnFavoriteMonth.setImageResource(android.R.drawable.btn_star_big_on)
             }
             tvRecycleMonth.text = ScreenSecond.monthNameList[photoMonth.mounthNumber]
             root.setOnClickListener {
