@@ -37,7 +37,7 @@ class ThirdScreen : AppCompatActivity() {
         database.years[yearNumber].mounths[monthNumber].favoritePhoto?.let{
             binding.placeUnderImageMonth.setImageDrawable(Utils.stringToImage(it))
         }
-        binding.rcView.layoutManager = GridLayoutManager(this@ThirdScreen,2)
+        binding.rcView.layoutManager = GridLayoutManager(this,2)
         binding.rcView.adapter = adapter
         binding.tvMonth.text =ScreenSecond.monthNameList[database.years[yearNumber].mounths[monthNumber].mounthNumber]
         binding.btnBack.setOnClickListener {

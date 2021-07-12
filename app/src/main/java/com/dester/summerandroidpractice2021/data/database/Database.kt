@@ -7,7 +7,8 @@ import com.dester.summerandroidpractice2021.data.models.Events
 import com.dester.summerandroidpractice2021.data.models.Year
 import java.util.*
 
-class Database(context: Context){
+class
+Database(context: Context){
 
     private var file = File(context.filesDir.absolutePath + "database.json")
 

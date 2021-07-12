@@ -100,17 +100,6 @@ class ScreenSecond : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
-        adapter.setItems(newList)
-        adapter.notifyDataSetChanged()
-    }
-
-    override fun onPause() {
-        Singleton.saveData(this)
-        super.onPause()
-    }
     fun favoriteMonth(monthNumber: Int) {
         val month = database.years[yearNumber].mounths[monthNumber]
         if(month.favoritePhoto==null){
@@ -124,5 +113,16 @@ class ScreenSecond : AppCompatActivity() {
             month.isFavorite = true
             database.years[yearNumber].favoritePhoto = month.favoritePhoto
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        val newList: ArrayList<Mounth> = database.years[yearNumber].mounths
+        adapter.setItems(newList)
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun onPause() {
+        Singleton.saveData(this)
+        super.onPause()
     }
 }
